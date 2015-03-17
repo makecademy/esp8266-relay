@@ -17,7 +17,9 @@ srv:listen(80,function(conn)
     if parsed_request == 'off' then gpio.write(1, gpio.LOW) end
 
     -- Display main page
+    conn:send("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
     conn:send('<head>')
+    conn:send('<meta name="viewport" content="width=device-width, initial-scale=1">')
     conn:send('<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>')
     conn:send('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">')
     conn:send('</head>')
