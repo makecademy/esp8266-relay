@@ -1,0 +1,13 @@
+language: c
+sudo: false
+before_install:
+  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+install:
+  - arduino --install-library "aREST"
+  - arduino --install-library "aREST UI"
+script:
+  - build_platform esp8266
+notifications:
+  email:
+    on_success: change
+    on_failure: change
